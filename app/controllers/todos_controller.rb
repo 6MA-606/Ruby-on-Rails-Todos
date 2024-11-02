@@ -4,7 +4,7 @@ class TodosController < ApplicationController
   # GET /todos or /todos.json
   def index
     if params[:search].present?
-      @todos = Todo.where(title: params[:search])
+      @todos = Todo.where("title LIKE ?", "%#{params[:search]}%")
     else
       @todos = Todo.all
     end
