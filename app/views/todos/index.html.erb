@@ -1,3 +1,5 @@
+<% content_for :title, "Todos" %>
+
 <% if notice %> 
   <section class="max-w-md w-full mx-auto" >
     <div class="max-w-md bg-orange-100 border-t-4 border-orange-600 rounded-b text-orange-900 px-4 py-3 shadow-md mb-4">
@@ -11,9 +13,16 @@
     </div>
     </div>
   </section>
-<% end %> 
+<% end %>
 
-<% content_for :title, "Todos" %>
+<section class="block max-w-md w-full mx-auto mb-3" >
+  <%= form_with method: :get, class: "flex gap-2 items-center" do |form| %>
+    <%= form.text_field :search, class: "shadow rounded-md border border-gray-300 outline-none px-3 py-2 w-full bg-transparent hover:border-orange-600 focus:border-orange-600 focus:ring-orange-600", placeholder: "Enter todo title" %>
+    <div class="rounded-lg px-3 py-2 bg-orange-600 w-fit text-white hover:bg-orange-800">
+      <%= form.submit "Search" %>
+    </div>
+  <% end %>
+</section>
 
 <section class="block max-w-md w-full mx-auto bg-zinc-50 py-8 px-4 border border-gray-200 rounded-md shadow-sm" >
   <div class="flex justify-between items-center">
