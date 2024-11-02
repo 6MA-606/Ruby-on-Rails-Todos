@@ -1,15 +1,18 @@
-<% content_for :title, "Editing todo" %>
+<%= turbo_frame_tag "modal" do %>
+  <% content_for :title, "Editing todo" %>
+  <%= tag.div data: { controller: "turbo-modal" }, class: "fixed inset-0 backdrop-blur-md" do %>
+    <section class="mt-28 block max-w-md w-full mx-auto bg-zinc-50 py-8 px-4 border border-gray-200 rounded-md shadow-sm" >
+        <div class="flex justify-between items-center mb-4">
+          <%= button_tag "< Back",  data: { action: "turbo-modal#hideModal" }, type: "button", class: "rounded-lg px-3 py-2 border border-transparent hover:border-orange-600 text-orange-600 w-fit" %>
 
-<section class="block max-w-md w-full mx-auto bg-zinc-50 py-8 px-4 border border-gray-200 rounded-md shadow-sm" >
-    <div class="flex justify-between items-center mb-4">
-      <%= link_to "< Back", todos_path, class: "rounded-lg px-3 py-2 border border-transparent hover:border-orange-600 text-orange-600 w-fit" %>
+          <h1 class="text-2xl font-bold text-orange-600">Editing Todo</h1>
 
-      <h1 class="text-2xl font-bold text-orange-600">Editing Todo</h1>
+          <div class="w-[78.13px]"></div>
+        </div>
 
-      <div class="w-[78.13px]"></div>
-    </div>
-
-  <section class="ml-4">
-    <%= render "form", todo: @todo %>
-  </section>
-</section>
+      <section class="ml-4">
+        <%= render "form", todo: @todo %>
+      </section>
+    </section>
+  <% end %>
+<% end %>
